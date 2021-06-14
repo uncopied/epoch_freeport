@@ -34,8 +34,7 @@
 
         console.log(optInButton);
         optInButton.addEventListener('click',async function(){
-       
-            let addressToOptInto = await optInEpochNft("FNYZLBWJTCIMWKZCE4Q6JHQHLD3XHGVDZTD5YXRYVR4CDKZY2NHG7RA65I",16405423);
+            let addressToOptInto = await optInEpochNft(sender,16405423);
             console.log(addressToOptInto);
         });
 
