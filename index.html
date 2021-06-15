@@ -146,12 +146,12 @@
                   return el.blob
               });
         try{
-         let   txTest=(await client.sendRawTransaction(signedTest).do());
+         let   txTest=(await client.sendRawTransaction(blobs).do());
          console.log(txTest);
           }catch(error){
             console.error("Error ocurred ", error);
                     alert(error)
-                    
+
                     return;
             }
         });
