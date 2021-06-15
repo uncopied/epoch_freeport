@@ -261,7 +261,49 @@
         // });
 
 
+        async function createAssetTxn(epochTx){
 
+return new Promise(async(resolve,reject)=>{
+    let params ={};
+    try{
+     params = await client.getTransactionParams().do();
+    }catch(error){
+       reject(error); 
+    }
+ 
+    let epoch1Str = JSON.stringify(epochTx);
+      let signedTxns = {}
+      try{
+        signedTxns =   await  myalgoConnect.signTransaction(epochTx);
+      }catch(error){
+        reject(error);
+      }
+      console.log(signedTxns);
+      let blobs = signedTxns.map((el,index)=>{
+              return el.blob
+          });
+    try{
+     let   txTest={}
+     try{ 
+         txTest = (await client.sendRawTransaction(blobs).do());
+         console.log(txTest);
+         resolve(txTest)
+     }catch(error){
+         reject(error)
+     }
+
+
+  
+      }catch(error){
+        console.error("Error ocurred ", error);
+        
+                reject(error);
+                return;
+        }
+
+});
+
+}
 
 
         function formatJson(jsonString){
@@ -292,49 +334,7 @@
         });
 
        
- async function createAssetTxn(epochTx){
 
-    return new Promise(async(resolve,reject)=>{
-        let params ={};
-        try{
-         params = await client.getTransactionParams().do();
-        }catch(error){
-           reject(error); 
-        }
-     
-        let epoch1Str = JSON.stringify(epochTx);
-          let signedTxns = {}
-          try{
-            signedTxns =   await  myalgoConnect.signTransaction(epochTx);
-          }catch(error){
-            reject(error);
-          }
-          console.log(signedTxns);
-          let blobs = signedTxns.map((el,index)=>{
-                  return el.blob
-              });
-        try{
-         let   txTest={}
-         try{ 
-             txTest = (await client.sendRawTransaction(blobs).do());
-             console.log(txTest);
-             resolve(txTest)
-         }catch(error){
-             reject(error)
-         }
-
-   
-      
-          }catch(error){
-            console.error("Error ocurred ", error);
-            
-                    reject(error);
-                    return;
-            }
-
-    });
-  
- }
 
 
 
