@@ -65,31 +65,47 @@
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft2">Create Epoch NFT Edition 2</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft3">Create Epoch NFT Edition 3</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft4">Create Epoch NFT Edition 4</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft5">Create Epoch NFT Edition 5</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft6">Create Epoch NFT Edition 6</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft7">Create Epoch NFT Edition 7</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
-            <button>Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft8">Create Epoch NFT Edition 8</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button id ="createEpochNft9">Create Epoch NFT Edition 9</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button id ="createEpochNft10">Create Epoch NFT Edition 10</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button id ="createEpochNft11">Create Epoch NFT Edition 11</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button id ="createEpochNft12">Create Epoch NFT Edition 12</button>
         </div>
     </div>
 
@@ -108,6 +124,18 @@
         let epochNftDesc1 = document.getElementById("epochNftDesc1");
         let epochNftBut1 = document.getElementById("createEpochNft1");
         let showNft1but = document.getElementById("showEpochNft1Trans");
+        let epochNftBut2 = document.getElementById("createEpochNft2");
+        let epochNftBut3 = document.getElementById("createEpochNft3");
+        let epochNftBut4 = document.getElementById("createEpochNft4");
+        let epochNftBut5 = document.getElementById("createEpochNft5");
+        let epochNftBut6 = document.getElementById("createEpochNft6");
+        let epochNftBut7 = document.getElementById("createEpochNft7");
+        let epochNftBut8 = document.getElementById("createEpochNft8");
+        let epochNftBut9 = document.getElementById("createEpochNft9");
+        let epochNftBut10 = document.getElementById("createEpochNft10");
+        let epochNftBut11 = document.getElementById("createEpochNft11");
+        let epochNftBut12 = document.getElementById("createEpochNft12");
+        
         // let optInButton = document.getElementById("optIn");
         let connectButton = document.getElementById("connect");
       
@@ -122,38 +150,108 @@
         let params = await client.getTransactionParams().do();
         console.log(approvalProgram);
         console.log(clearProgram);
-        console.log(params);
+      
        
-        let sender = "";
+        let sender = "FNYZLBWJTCIMWKZCE4Q6JHQHLD3XHGVDZTD5YXRYVR4CDKZY2NHG7RA65I";
         
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
             sender = addresses[0].address;
             console.log(sender);
         });
-
-        epochNftBut1.addEventListener('click',async function(){
-            // alert("epochNft1");
-        
         let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        console.log(epochtx1);
+        let epochtx2 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx3 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx4 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx5 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx6 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx7 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx8 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx9 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx10 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx11 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx12 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        let epochtx13 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+         
+        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
+            let confirmedTx = await createAssetTxn(epochtx1);
+        });
 
 
-        let epoch1Str = JSON.stringify(epochtx1);
-          let signedTxns = await  myalgoConnect.signTransaction(epochtx1);
-          console.log(signedTxns);
-          let blobs = signedTxns.map((el,index)=>{
-                  return el.blob
-              });
-        try{
-         let   txTest=(await client.sendRawTransaction(blobs).do());
-         console.log(txTest);
-          }catch(error){
-            console.error("Error ocurred ", error);
-                    alert(error)
+        epochNftBut2.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
 
-                    return;
-            }
+
+        epochNftBut3.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+        epochNftBut4.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+        epochNftBut5.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+        epochNftBut6.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+        epochNftBut7.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+        epochNftBut8.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut9.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut10.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+
+        epochNftBut11.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut12.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
+       
+        });
+
+
+
+        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
+       
         });
 
 
@@ -194,7 +292,49 @@
         });
 
        
+ async function createAssetTxn(epochTx){
 
+    return new Promise(async(resolve,reject)=>{
+        let params ={};
+        try{
+         params = await client.getTransactionParams().do();
+        }catch(error){
+           reject(error); 
+        }
+     
+        let epoch1Str = JSON.stringify(epochTx);
+          let signedTxns = {}
+          try{
+            signedTxns =   await  myalgoConnect.signTransaction(epochTx);
+          }catch(error){
+            reject(error);
+          }
+          console.log(signedTxns);
+          let blobs = signedTxns.map((el,index)=>{
+                  return el.blob
+              });
+        try{
+         let   txTest={}
+         try{ 
+             txTest = (await client.sendRawTransaction(blobs).do());
+             console.log(txTest);
+             resolve(txTest)
+         }catch(error){
+             reject(error)
+         }
+
+   
+      
+          }catch(error){
+            console.error("Error ocurred ", error);
+            
+                    reject(error);
+                    return;
+            }
+
+    });
+  
+ }
 
 
 

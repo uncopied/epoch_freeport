@@ -4,7 +4,7 @@ console.log(algosdk);
     let nftUrl = "epoch.gallery";
     // let from = "VTAUB5LOVTWKXICWEDBO5UG2JNNGEW7ULRB4PQB23DGRKSAXDVPORQNZJE";
     let appArgs =[algosdk.encodeUint64(price),algosdk.encodeUint64(5),new Uint8Array(Buffer.from("YGCKHAG4H3WDUQSAY5J4MK5ZIWLGIF7W6ZYO5EZY3OGZJB5FWGDNBX7BUA","base64")),new Uint8Array(Buffer.from("IKEPBSW7RSPN4TXYC3AV6FOOGZ6PJLTJKEB2PVCTPSRFNB3CANZ5JJRZPY","base64")), new Uint8Array(Buffer.from("2FSBHE3XAXJHBFFUABPPBBU3ZL4PQAHI6BB3KTHJKL5IZCC7BG4LR6GRT4","base64")), new Uint8Array(Buffer.from("UONII5HLZPHGDCBCETVTFGX42I5MJWEYKM5NUIFQW3A47CSDIHZN74AYUA","base64")), new Uint8Array(Buffer.from("EMMEIOWLZPMUCXSLGB5QOR33HCQZAQT6KSRGCXHBO54W7LNLQCJXSGJ4IQ","base64")), new Uint8Array(Buffer.from("UNH443RNFL4NWFCP5AI3N34C6IK6SWDEPZRLFKXGWYTXBZ5BTLJJLGWLRQ","base64")), new Uint8Array(Buffer.from("QPNWTRS3FLRUICYYLVPQV7QZIJPBNM2EV6S5BF6JOFQL7DGCLU5HKQSUK4","base64"))];
-    console.log(appArgs);
+    
     let globalBytes =10;
     let globalInts = 3;
     let localBytes =1;
@@ -146,7 +146,7 @@ function createApplicationTransaction(params,sender,appApprovalProgram,appClearP
         appGlobalByteSlices,
         appArgs
 };
-console.log(txn);
+
     return txn;
 }
 
