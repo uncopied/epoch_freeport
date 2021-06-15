@@ -129,7 +129,7 @@ function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve)
       return txn;
 }
 
-function createApplicationTransaction(params,sender,approvalProgram,clearProgram,localInts,localBytes,globalInts,globalBytes,appArgs){
+function createApplicationTransaction(params,sender,appApprovalProgram,appClearProgram,appLocalInts,appLocalByteSlices,appGlobalInts,appGlobalByteSlices,appArgs){
     let txn = {
         type: "appl",
         appOnComplete: 0,
@@ -137,12 +137,13 @@ function createApplicationTransaction(params,sender,approvalProgram,clearProgram
         fee: 1000,
         flatFee: true,
         ...params,
-        approvalProgram,
-        clearProgram,
-        localInts,
-        localBytes,
-        globalInts,
-        globalBytes
+        appApprovalProgram,
+        appClearProgram,
+        appLocalInts,
+        appLocalByteSlices,
+        appGlobalInts,
+        appGlobalByteSlices,
+        appArgs
 };
     return txn;
 }
