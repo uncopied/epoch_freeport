@@ -9,43 +9,195 @@
     <script src="./js/buffer.js"></script>
     <script src="./js/myalgo.js"></script>
     <script src ="./js/scripts.js"></script>
+
+    <style>
+        body{
+            text-align: center;
+            height: 100vh; /* Magic here */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+        }
+        .childDiv{
+            border-width:1px;
+            border-color: #4ABCD9;
+            border-style: solid;
+            width:70%;
+            height:90%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            /* justify-content: center; */
+            align-items: center;
+                }
+
+            button{
+                display:block;
+                height:40px;
+                width:200px;
+                margin-top: 10px;
+                border-radius: 10px;
+                border-width: 0px;
+                background-color: #4ABCD9;
+                color: white;
+                font-weight: bold;
+            }
+            .actionContainer{
+                 width:100%;
+                 text-align: center;
+                 display: flex;
+                 align-items:center ;
+                 flex-direction: column;
+                 margin-top: 30px;
+            }
+    </style>
 </head>
 <body>
+    <div class="childDiv">
 
-    <div>
+        <div class="actionContainer" id="connect">
+            <button >Connect To myalgowallet</button>
+        </div>
+        <div class="actionContainer">
+            <p id ="epochNftDesc1">Json Decription of transaction to Sign</p>
+            <button id ="showEpochNft1Trans">Show NFT Edition 1 trans</button>
+            <button id ="createEpochNft1">Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+        <div class="actionContainer">
+            <p>Json Decription of transaction to Sign</p>
+            <button>Create Epoch NFT Edition 1</button>
+        </div>
+    </div>
+
+    <!-- <div>
         <button id="connect">Connect</button>
     </div>
 
     <div>
         <button id="optIn">Opt Into NFT</button>
-    </div>
+    </div> -->
    
     
 
     <script>
         window.addEventListener('load',async function(){
+        let epochNftDesc1 = document.getElementById("epochNftDesc1");
+        let epochNftBut1 = document.getElementById("createEpochNft1");
+        let showNft1but = document.getElementById("showEpochNft1Trans");
+        // let optInButton = document.getElementById("optIn");
+        let connectButton = document.getElementById("connect");
+        
+
+      
         const token = { 'X-API-Key':'ADRySlL0NK5trzqZGAE3q1xxIqlQdSfk1nbHxTNe'};
         const server = "https://testnet-algorand.api.purestake.io/ps2";
         const port = '';
         const client = new algosdk.Algodv2(token, server, port);
+        var compiledApprovalProgram = await compileFreeportContract(client);
+        let compiledClearProgram = await compileClearProgram(client);
+        let approvalProgram =  new Uint8Array(Buffer.from(compiledApprovalProgram.result,"base64"));
+        let clearProgram =  new Uint8Array(Buffer.from(compiledClearProgram.result,"base64"));
+        let params = await client.getTransactionParams().do();
+        console.log(approvalProgram);
+        console.log(clearProgram);
+        console.log(params);
+        
+        let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000);
+        console.log(epochtx1);
+
+
+        let epoch1Str = JSON.stringify(epochtx1);
         let sender = "";
-        let optInButton = document.getElementById("optIn");
-        let connectButton = document.getElementById("connect");
-
-        console.log(optInButton);
-        optInButton.addEventListener('click',async function(){
-            let addressToOptInto = await optInEpochNft(sender,16405423);
-            console.log(addressToOptInto);
-        });
-
+        
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
             sender = addresses[0];
             console.log(sender);
         });
 
+        epochNftBut1.addEventListener('click',async function(){
+            // alert("epochNft1");
+            myalgoConnect.signTransaction(epochtx1);
         });
-        
+
+        // optInButton.addEventListener('click',async function(){
+        //     let addressToOptInto = await optInEpochNft(sender,16405423);
+        //     console.log(addressToOptInto);
+        // });
+
+
+
+
+
+        function formatJson(jsonString){
+            f = {
+            brace: 0
+        }; // AN OBJECT FOR TRACKING INCREMENTS/DECREMENTS,
+           // IN PARTICULAR CURLY BRACES (OTHER PROPERTIES COULD BE ADDED)
+     
+
+            let regstr = jsonString.replace(/({|}[,]*|[^{}:]+:[^{}:,]*[,{]*)/g, function (m, p1) {
+                            var rtnFn = function() {
+                                    return '<div style="text-indent: ' + (f['brace'] * 20) + 'px;">' + p1 + '</div>';
+                                },
+                                rtnStr = 0;
+                                if (p1.lastIndexOf('{') === (p1.length - 1)) {
+                                    rtnStr = rtnFn();
+                                    f['brace'] += 1;
+                                } else if (p1.indexOf('}') === 0) {
+                                    f['brace'] -= 1;
+                                    rtnStr = rtnFn();
+                                } else {
+                                    rtnStr = rtnFn();
+                                }
+                                return rtnStr;
+                            });
+            return regstr;
+        }
+        });
+
+       
+
+
+
+
+
+
+
+      
+          /*
+          Peter Conects to myalgoconnect
+          He creates the assets editions 1 to 13 of his asset
+          He claws back each asset just immediately after creating them
+
+          
+          */
     </script>
+
+  
 </body>
 </html>

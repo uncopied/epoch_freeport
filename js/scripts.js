@@ -1,5 +1,5 @@
 
-async function createEpochNft(name,params,approvalProgram,clearProgram,price){
+ function createEpochNft(name,params,approvalProgram,clearProgram,price){
     let unitName = "EPOCH";
     let nftUrl = "epoch.gallery";
     let from = "VTAUB5LOVTWKXICWEDBO5UG2JNNGEW7ULRB4PQB23DGRKSAXDVPORQNZJE";
@@ -9,14 +9,14 @@ async function createEpochNft(name,params,approvalProgram,clearProgram,price){
     let localBytes =1;
     let localInts = 1;
     let assetCreateTxn = createAsa(params,from,name,unitName,0,1,nftUrl,from,from,from,true);
-    let applicationCreateTxn = createApplicationTransaction(params,from,approvalProgram,clearProgram,localInts,localBytes,globalInts,globalBytes,appArgs) ;
+    let applicationCreateTxn = createApplicationTransaction(params,from,approvalProgram,clearProgram,localInts,localBytes,globalInts,globalBytes,appArgs);
     let txns = [assetCreateTxn,applicationCreateTxn];
     let groupId = algosdk.computeGroupID(txns);
     txns = txns.map((el)=>{
         el.group=groupId;
         return el;
         });
-    await myalgoConnect.signTransaction(txns);
+    return txns;
 }
 
 async function createUncopiedNft(name,params){
@@ -33,6 +33,7 @@ async function createUncopiedNft(name,params){
             reject(error);
         }
     });
+
     }
 
     
@@ -247,7 +248,7 @@ async function compileEpochClawbackAddress(appId,client){
     })
     }
 
-    async function compileFreeportContract(){
+    async function compileFreeportContract(client){
         const freeportSource=`#pragma version 3
         int 0
         txn ApplicationID
@@ -708,6 +709,20 @@ async function compileEpochClawbackAddress(appId,client){
         return new Promise(async(resolve,reject)=>{
             try{
                 const results = await client.compile(freeportSource).do();
+                resolve(results)
+            }catch(error){
+               reject(error) 
+            }
+           
+        });
+    }
+
+    async function compileClearProgram(client){
+        var clearProgramSource=`#pragma version 3
+        int 1`
+        return new Promise(async(resolve,reject)=>{
+            try{
+                const results = await client.compile(clearProgramSource).do();
                 resolve(results)
             }catch(error){
                reject(error) 
