@@ -110,8 +110,6 @@
         let showNft1but = document.getElementById("showEpochNft1Trans");
         // let optInButton = document.getElementById("optIn");
         let connectButton = document.getElementById("connect");
-        
-
       
         const token = { 'X-API-Key':'ADRySlL0NK5trzqZGAE3q1xxIqlQdSfk1nbHxTNe'};
         const server = "https://testnet-algorand.api.purestake.io/ps2";
@@ -125,12 +123,7 @@
         console.log(approvalProgram);
         console.log(clearProgram);
         console.log(params);
-        
-        let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000);
-        console.log(epochtx1);
-
-
-        let epoch1Str = JSON.stringify(epochtx1);
+       
         let sender = "";
         
         connectButton.addEventListener('click',async function(){
@@ -141,6 +134,12 @@
 
         epochNftBut1.addEventListener('click',async function(){
             // alert("epochNft1");
+        
+        let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        console.log(epochtx1);
+
+
+        let epoch1Str = JSON.stringify(epochtx1);
             myalgoConnect.signTransaction(epochtx1[0]);
         });
 
