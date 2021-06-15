@@ -128,7 +128,7 @@
         
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
-            sender = addresses[0];
+            sender = addresses[0].address;
             console.log(sender);
         });
 
