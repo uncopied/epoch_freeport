@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epoch TxSign</title>
     <script src="https://unpkg.com/algosdk@latest"></script>
-    <script src="./buffer.js"></script>
-    <script src="./myalgo.js"></script>
-    <script src ="./scripts.js"></script>
+    <script src="./js/buffer.js"></script>
+    <script src="./js/myalgo.js"></script>
+    <script src ="./js/scripts.js"></script>
 </head>
 <body>
 
@@ -42,7 +42,7 @@
            let addresses = await  myalgoConnect.connect();
             sender = addresses[0];
             console.log(sender);
-        })
+        });
 
         });
         
