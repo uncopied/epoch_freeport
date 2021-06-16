@@ -63,6 +63,9 @@
             <button id ="showEpochNft1Trans">Show NFT Edition 1 trans</button>
             <button id ="createEpochNft1">Create All 13 Editions</button>
             <button id ="clawbackAllAssets">Clawback All 13 Editions</button>
+            <a id="downloadAnchorElem" style="display:none"></a>
+
+            <button id = "downloadSampleJson">Download Sample Json</button>
         </div>
         <!-- <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
@@ -87,7 +90,7 @@
         let epochNftBut1 = document.getElementById("createEpochNft1");
         let showNft1but = document.getElementById("showEpochNft1Trans");
         let clawback13aAssetsBtn = document.getElementById("clawbackAllAssets")
-        
+        let downloadJson = document.getElementById("downloadSampleJson");
         // let optInButton = document.getElementById("optIn");
         let connectButton = document.getElementById("connect");
       
@@ -103,7 +106,7 @@
         let approvalProgram =  new Uint8Array(Buffer.from(compiledApprovalProgram.result,"base64"));
         let clearProgram =  new Uint8Array(Buffer.from(compiledClearProgram.result,"base64"));
         let params = await client.getTransactionParams().do();
-        let allTransactions = [{txID: "A222A4KP27I5272R4CE4IFVJKMAFAIDCIOFETR5JYYAWHNEQC4QA", },
+        let allTransactions =      [{txID: "A222A4KP27I5272R4CE4IFVJKMAFAIDCIOFETR5JYYAWHNEQC4QA", },
                                 {txID:"RG3YDL57MQ5QQX6SU5HPCGHKBUQEHS4UBNZ3DH3YALRUOH4WQCFA"},
                                 {txID:"M6OBWBIERL5A2LHB6HZWLURPD4YGHUDH57XKMQ47YB27VH4546UA"},
                                 {txID: "WYECVTYHQSKG34DSHFSU3OAYTWMMF74SLVGH2KQUFAYE7XWSH2HA", },
@@ -125,26 +128,28 @@
       
         let sender = "FNYZLBWJTCIMWKZCE4Q6JHQHLD3XHGVDZTD5YXRYVR4CDKZY2NHG7RA65I";
         // console.log(createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender))
+       
+
+        downloadJson.addEventListener("click",async function(){
+        let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        epochtx1 = epochtx1.map((el,index)=>{if(index!=1){return el}})
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(epochtx1));
+        var dlAnchorElem = document.getElementById('downloadAnchorElem');
+        dlAnchorElem.setAttribute("href",     dataStr     );
+        dlAnchorElem.setAttribute("download", "scene.json");
+        dlAnchorElem.click();
+        })
+
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
             sender = addresses[0].address;
             console.log(sender);
         });
-        let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx2 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx3 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx4 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx5 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx6 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx7 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx8 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx9 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx10 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx11 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx12 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-        // let epochtx13 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+      
          
-        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
+        epochNftBut1.addEventListener('click',async function(){      
+             // alert("epochNft1");
+             let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
             let confirmedTx = await createAssetTxn([...epochtx1]);
             // txID
         });
