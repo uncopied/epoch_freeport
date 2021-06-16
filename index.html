@@ -189,7 +189,7 @@
                     el.group=groupId;
                     return el;
                     });
-            let confirmedTx = await  await  myalgoConnect.signTransaction(allAssetClawBackTxns);
+            let signedTxns = await  await  myalgoConnect.signTransaction(allAssetClawBackTxns);
             let blobs = signedTxns.map((el,index)=>{
               return el.blob
                       });
