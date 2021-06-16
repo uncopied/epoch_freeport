@@ -181,9 +181,14 @@
                 alert(error); 
                 }
             let allAssetClawBackTxns = allAssetIds.map((el)=>{
-                return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress)
+                return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress.hash)
             });
             console.log(allAssetClawBackTxns);
+            let groupId = algosdk.computeGroupID(allAssetClawBackTxns);
+            allAssetClawBackTxns = allAssetClawBackTxns.map((el)=>{
+                    el.group=groupId;
+                    return el;
+                    });
             let confirmedTx = await createAssetTxn([...allAssetClawBackTxns]);
             // txID
   
@@ -221,8 +226,6 @@
         async function createAssetTxn(epochTx){
 
 return new Promise(async(resolve,reject)=>{
-   
- 
     let epoch1Str = JSON.stringify(epochTx);
       let signedTxns = {}
       try{
