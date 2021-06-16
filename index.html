@@ -62,6 +62,7 @@
             <p id ="epochNftDesc1">Json Decription of transaction to Sign</p>
             <button id ="showEpochNft1Trans">Show NFT Edition 1 trans</button>
             <button id ="createEpochNft1">Create Epoch NFT Edition 1</button>
+            <button id ="createEpochNft1">Clawback Epoch NFT Edition 1</button>
         </div>
         <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
@@ -174,7 +175,7 @@
         let epochtx13 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
          
         epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
-            let confirmedTx = await createAssetTxn(epochtx1);
+            let confirmedTx = await createAssetTxn([...epochtx1,epochtx2[0],epochtx3[0],epochtx4[0],epochtx5[0],epochtx6[0],epochtx7[0],epochtx8[0],epochTx9[0],epochtx10[0],epochTx11[0],epochtx12[0],epochtx13[0]]);
         });
 
 
