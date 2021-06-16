@@ -161,6 +161,7 @@
 
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
+           console.log(addresses);
             sender = addresses[1].address;
             console.log(sender);
             epochNftDesc1.innerText = "Connected to MyAlgo with address: "+ sender;
