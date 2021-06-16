@@ -69,6 +69,8 @@
             <a id="downloadAnchorElem" style="display:none"></a>
 
             <button id = "downloadSampleJson">Download Sample Json</button>
+
+            <button id = "downloadAssetJson">Download Asset Json</button>
         </div>
         <!-- <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
@@ -96,6 +98,8 @@
         let downloadJson = document.getElementById("downloadSampleJson");
         // let optInButton = document.getElementById("optIn");
         let connectButton = document.getElementById("connect");
+
+        let downloadAssetJson =  document.getElementById("downloadAssetJson");
       
         const token = { 'X-API-Key':'ADRySlL0NK5trzqZGAE3q1xxIqlQdSfk1nbHxTNe'};
         const server = "https://testnet-algorand.api.purestake.io/ps2";
@@ -142,9 +146,18 @@
         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(epochtx1));
         var dlAnchorElem = document.getElementById('downloadAnchorElem');
         dlAnchorElem.setAttribute("href",     dataStr     );
-        dlAnchorElem.setAttribute("download", "scene.json");
+        dlAnchorElem.setAttribute("download", "sample.json");
         dlAnchorElem.click();
-        })
+        });
+
+        downloadAssetJson.addEventListener("click",async function(){
+       
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allAssetIds));
+        var dlAnchorElem = document.getElementById('downloadAnchorElem');
+        dlAnchorElem.setAttribute("href",     dataStr     );
+        dlAnchorElem.setAttribute("download", "sample.json");
+        dlAnchorElem.click();
+        });
 
         connectButton.addEventListener('click',async function(){
            let addresses = await  myalgoConnect.connect();
