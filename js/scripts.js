@@ -46,7 +46,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599673"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 1/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 1/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/H",
             total:1,
@@ -56,7 +56,7 @@ console.log(algosdk);
 
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 2/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 2/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/I",
             total:1,
@@ -66,7 +66,7 @@ console.log(algosdk);
 
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 3/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 3/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/J",
             total:1,
@@ -75,7 +75,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599805"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 4/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 4/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/K",
             total:1,
@@ -84,7 +84,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599860"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 5/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 5/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/L",
             total:1,
@@ -93,7 +93,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599905"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 6/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 6/8 AP" ,
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/M",
             total:1,
@@ -102,7 +102,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599951"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 7/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 7/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/N",
             total:1,
@@ -111,7 +111,7 @@ console.log(algosdk);
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599983"))
         },
         {
-            name:"EPOCH, \"FREEPORT\", 2021; 8/8",
+            name:"EPOCH, \"FREEPORT\", 2021; 8/8 AP",
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/O",
             total:1,
