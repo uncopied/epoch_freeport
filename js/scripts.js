@@ -639,18 +639,6 @@ async function compileEpochClawbackAddress(appId,client){
         load 10
         ==
         &&
-        byte "edition"
-        app_global_get
-        int 1
-        +
-        store 13
-        byte "edition"
-        load 13
-        app_global_put
-        load 13
-        int 5
-        <=
-        &&
         return
         
         creation:
