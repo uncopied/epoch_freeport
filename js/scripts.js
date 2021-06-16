@@ -133,7 +133,7 @@ function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve,
         type: 'acfg',
         from: from,
         assetIndex: assetIndex,
-        assetFreeze: assetFreeze,
+        assetFreeze: "",
         assetManager: assetManager,
         assetReserve: assetReserve,
         assetClawback
