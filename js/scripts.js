@@ -5,7 +5,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/C",
             total:1,
-            metadataHash:new Uint8Array(btoa("73cd943cc7ef72d65d754662985412a4")),
+            metadataHash:btoa("73cd943cc7ef72d65d754662985412a4"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599509"))
         },
@@ -14,7 +14,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/D",
             total:1,
-            metadataHash:new Uint8Array(btoa("ddea2b97093aeff0f5c2b262eb562322")),
+            metadataHash:btoa("ddea2b97093aeff0f5c2b262eb562322"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599550"))
         },
@@ -23,7 +23,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/E",
             total:1,
-            metadataHash:new Uint8Array(btoa("aaede09d0799f5693e9dd627a0e22ec4")),
+            metadataHash:btoa("aaede09d0799f5693e9dd627a0e22ec4"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599602"))
         },
@@ -32,7 +32,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/F",
             total:1,
-            metadataHash:new Uint8Array(btoa("bd2964d746eda8f42da3cdf21883bef3")),
+            metadataHash:btoa("bd2964d746eda8f42da3cdf21883bef3"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599627"))
         },
@@ -41,7 +41,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/G",
             total:1,
-            metadataHash:new Uint8Array(btoa("2cfc7e5bcb47fa235c1480c0b991fa76")),
+            metadataHash:btoa("2cfc7e5bcb47fa235c1480c0b991fa76"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599673"))
         },
@@ -50,7 +50,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/H",
             total:1,
-            metadataHash:new Uint8Array(btoa("6099c8bd6d3e9db82a72cbd40c8a1771")),
+            metadataHash:btoa("6099c8bd6d3e9db82a72cbd40c8a1771"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599716"))
 
@@ -60,7 +60,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/I",
             total:1,
-            metadataHash:new Uint8Array(btoa("4bb069bf9c6bcc6b728217d9b2851926")),
+            metadataHash:btoa("4bb069bf9c6bcc6b728217d9b2851926"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599759"))
 
@@ -70,7 +70,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/J",
             total:1,
-            metadataHash:new Uint8Array(btoa("afabe9c45b609bcf4382f8e624174ebb")),
+            metadataHash:btoa("afabe9c45b609bcf4382f8e624174ebb"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599805"))
         },
@@ -79,7 +79,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/K",
             total:1,
-            metadataHash:new Uint8Array(btoa("d457a5ba58fb2e6cb09ab76dee991165")),
+            metadataHash:btoa("d457a5ba58fb2e6cb09ab76dee991165"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599860"))
         },
@@ -88,7 +88,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/L",
             total:1,
-            metadataHash:new Uint8Array(btoa("0bff9605a2874529628bfa681a8dc586")),
+            metadataHash:btoa("0bff9605a2874529628bfa681a8dc586"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599905"))
         },
@@ -97,7 +97,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/M",
             total:1,
-            metadataHash:new Uint8Array(btoa("603dbf8fff0239be23d3984e0bb152d5")),
+            metadataHash:btoa("603dbf8fff0239be23d3984e0bb152d5"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599951"))
         },
@@ -106,7 +106,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/N",
             total:1,
-            metadataHash:new Uint8Array(btoa("b13f3cd280641cbe6055ab33341aef2e")),
+            metadataHash:btoa("b13f3cd280641cbe6055ab33341aef2e"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243599983"))
         },
@@ -115,7 +115,7 @@ console.log(algosdk);
             unit:"EPOCH",
             url:"https://api.uncopied.art/c/v/O",
             total:1,
-            metadataHash:new Uint8Array(btoa("41bd0ef4a8589852c83f2ca5d2e39da1")),
+            metadataHash:btoa("41bd0ef4a8589852c83f2ca5d2e39da1"),
             decimals:0,
             note: new Uint8Array(Buffer.from( "UNCOPIED_ASA=243600015"))
         },
