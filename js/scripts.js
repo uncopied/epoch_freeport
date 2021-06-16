@@ -125,7 +125,7 @@ function clawbackAsa(params,sender,assetIndex,assetFreeze,assetManager,assetRese
       return txn;
 }
 
-function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve){
+function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve,assetClawback){
     txn = {
         ...params,
         fee: 1000,
@@ -136,6 +136,7 @@ function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve)
         assetFreeze: assetFreeze,
         assetManager: assetManager,
         assetReserve: assetReserve,
+        assetClawback
       };
       return txn;
 }

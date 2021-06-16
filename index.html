@@ -61,53 +61,14 @@
         <div class="actionContainer">
             <p id ="epochNftDesc1">Json Decription of transaction to Sign</p>
             <button id ="showEpochNft1Trans">Show NFT Edition 1 trans</button>
-            <button id ="createEpochNft1">Create Epoch NFT Edition 1</button>
-            <button id ="createEpochNft1">Clawback Epoch NFT Edition 1</button>
+            <button id ="createEpochNft1">Create All 13 Editions</button>
+            <button id ="clawbackAllAssets">Clawback All 13 Editions</button>
         </div>
-        <div class="actionContainer">
+        <!-- <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
             <button id ="createEpochNft2">Create Epoch NFT Edition 2</button>
         </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft3">Create Epoch NFT Edition 3</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft4">Create Epoch NFT Edition 4</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft5">Create Epoch NFT Edition 5</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft6">Create Epoch NFT Edition 6</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft7">Create Epoch NFT Edition 7</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft8">Create Epoch NFT Edition 8</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft9">Create Epoch NFT Edition 9</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft10">Create Epoch NFT Edition 10</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft11">Create Epoch NFT Edition 11</button>
-        </div>
-        <div class="actionContainer">
-            <p>Json Decription of transaction to Sign</p>
-            <button id ="createEpochNft12">Create Epoch NFT Edition 12</button>
-        </div>
+        <button id ="createEpochNft2">Create Epoch NFT Edition 2</button> -->
     </div>
 
     <!-- <div>
@@ -125,34 +86,43 @@
         let epochNftDesc1 = document.getElementById("epochNftDesc1");
         let epochNftBut1 = document.getElementById("createEpochNft1");
         let showNft1but = document.getElementById("showEpochNft1Trans");
-        let epochNftBut2 = document.getElementById("createEpochNft2");
-        let epochNftBut3 = document.getElementById("createEpochNft3");
-        let epochNftBut4 = document.getElementById("createEpochNft4");
-        let epochNftBut5 = document.getElementById("createEpochNft5");
-        let epochNftBut6 = document.getElementById("createEpochNft6");
-        let epochNftBut7 = document.getElementById("createEpochNft7");
-        let epochNftBut8 = document.getElementById("createEpochNft8");
-        let epochNftBut9 = document.getElementById("createEpochNft9");
-        let epochNftBut10 = document.getElementById("createEpochNft10");
-        let epochNftBut11 = document.getElementById("createEpochNft11");
-        let epochNftBut12 = document.getElementById("createEpochNft12");
+        let clawback13aAssetsBtn = document.getElementById("clawbackAllAssets")
         
         // let optInButton = document.getElementById("optIn");
         let connectButton = document.getElementById("connect");
       
         const token = { 'X-API-Key':'ADRySlL0NK5trzqZGAE3q1xxIqlQdSfk1nbHxTNe'};
         const server = "https://testnet-algorand.api.purestake.io/ps2";
+        const baseServer = "https://testnet-algorand.api.purestake.io/idx2";
+    
         const port = '';
         const client = new algosdk.Algodv2(token, server, port);
+        let indexerClient = new algosdk.Indexer(token, baseServer, port);
         var compiledApprovalProgram = await compileFreeportContract(client);
         let compiledClearProgram = await compileClearProgram(client);
         let approvalProgram =  new Uint8Array(Buffer.from(compiledApprovalProgram.result,"base64"));
         let clearProgram =  new Uint8Array(Buffer.from(compiledClearProgram.result,"base64"));
         let params = await client.getTransactionParams().do();
+        let allTransactions = [{txID: "A222A4KP27I5272R4CE4IFVJKMAFAIDCIOFETR5JYYAWHNEQC4QA", },
+                                {txID:"RG3YDL57MQ5QQX6SU5HPCGHKBUQEHS4UBNZ3DH3YALRUOH4WQCFA"},
+                                {txID:"M6OBWBIERL5A2LHB6HZWLURPD4YGHUDH57XKMQ47YB27VH4546UA"},
+                                {txID: "WYECVTYHQSKG34DSHFSU3OAYTWMMF74SLVGH2KQUFAYE7XWSH2HA", },
+                                {txID: "DPGOZFJF43QPZVIUPP3576FQJRQSK7IEXKNATA2TTDCYPNAZ2XCA", },
+                                {txID: "JWDFRQ7FVYAIIPNVRJMPFKXMB6USUVV6VDWVVWQ4LDMYXO2XYUKQ", },
+                                {txID: "OPGNCASNZAKK6E6D32TOECFFPVBW3UMZHWE6N5WASE2IH7ESSJSA", },
+                                {txID: "ZBEGOZH7S7UMV4PSHQ6FLXWA5HOLHYBD7VPDQ2OF5JLPPYIXNPIQ", },
+                                {txID: "BC34PXXZ5HVDMXZMMCU42EXEMKR4KSBTJ2MFQXDBEFFF45MKOMBQ", },
+                                {txID: "V3R6JC7HW7YYJJZ3ARVMPJDLQHPG5FYHLEUBZ55OY336VOBKPWFA", },
+                                {txID: "TW2DFZIRTU77KHX7TELL6TEHRZ3GXVJBCHYMN3PTU25I2BTOBQ5Q", },
+                                {txID: "P7Y4VMC23DARVO5SERQXFTV2QXKVH6Q7LBVSE3XYCPCTR6H5IVJQ", },
+                                {txID: "IYFRPSNMLBFCTUOOJDGVH4NLKQHFYZEC4A2D6OE55L63RMTRSL3Q", },
+                                {txID: "7KPXDCO33J4OUHRRE4VXTPL6ZUFT75ZM6ILZFBLI3GVNEDUGQE3Q", }];
+        let appId =0;
         console.log(approvalProgram);
+        let allAssetIds = [];
         console.log(clearProgram);
       
-       
+      
         let sender = "FNYZLBWJTCIMWKZCE4Q6JHQHLD3XHGVDZTD5YXRYVR4CDKZY2NHG7RA65I";
         // console.log(createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender))
         connectButton.addEventListener('click',async function(){
@@ -176,84 +146,70 @@
          
         epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
             let confirmedTx = await createAssetTxn([...epochtx1]);
+            // txID
         });
 
+        clawback13aAssetsBtn.addEventListener('click',async function(){
+            console.log("clicked");
+            for (let i =0;i<allTransactions.length;i++){
+                if(i!=1){
+                        let txId = allTransactions[i].txID;
+                        let transactionInfo =  await getTransactionInfo(txId)
+                        let assetId = transactionInfo.transaction["created-asset-index"];
+                        allAssetIds.push(assetId);
+                    }else{
+                        let txId = allTransactions[i].txID;
+                        let transactionInfo =  await getTransactionInfo(txId)
+                        appId = transactionInfo.transaction["created-application-index"];
+                    }
+            }
 
-        epochNftBut2.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
+            console.log(allAssetIds);
+            console.log(appId)
+            let assetClawbackAddress = {};
+            try{
+                assetClawbackAddress = await compileEpochClawbackAddress(appId,client);
+            }catch(error){
+                console.error(error)
+                alert(error);  
+            }
+            let params ={};
+                try{
+                params = await client.getTransactionParams().do();
+                }catch(error){
+                    console.error(error)
+                alert(error); 
+                }
+            let allAssetClawBackTxns = allAssetIds.map((el)=>{
+                return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress)
+            });
+            console.log(allAssetClawBackTxns);
+            // let confirmedTx = await createAssetTxn([...allAssetClawBackTxns]);
+            // txID
+  
+        })
+ 
 
-
-        epochNftBut3.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-        epochNftBut4.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-        epochNftBut5.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-        epochNftBut6.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-        epochNftBut7.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-        epochNftBut8.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-        epochNftBut9.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-        epochNftBut10.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-
-        epochNftBut11.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-        epochNftBut12.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
+       async function getTransactionInfo(txId){
+        let transactionInfo = {};
+            return new Promise(async(resolve,reject)=>{
+                setTimeout(async function(){
+                    try{
+                transactionInfo =  await indexerClient.lookupTransactionByID(txId).do()
+                let assetId = transactionInfo.transaction["created-asset-index"];
+                resolve(transactionInfo);
+                }catch(error){
+                reject(error);
+                }
+                },1000)
+               
+               
+            })
+      
+            return 
+        }
 
 
-
-        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
-
-
-
-        epochNftBut1.addEventListener('click',async function(){       // alert("epochNft1");
-       
-        });
 
 
         // optInButton.addEventListener('click',async function(){
@@ -265,17 +221,13 @@
         async function createAssetTxn(epochTx){
 
 return new Promise(async(resolve,reject)=>{
-    let params ={};
-    try{
-     params = await client.getTransactionParams().do();
-    }catch(error){
-       reject(error); 
-    }
+   
  
     let epoch1Str = JSON.stringify(epochTx);
       let signedTxns = {}
       try{
         signedTxns =   await  myalgoConnect.signTransaction(epochTx);
+        allTransactions = signedTxns;
       }catch(error){
         reject(error);
       }
@@ -292,9 +244,6 @@ return new Promise(async(resolve,reject)=>{
      }catch(error){
          reject(error)
      }
-
-
-  
       }catch(error){
         console.error("Error ocurred ", error);
         
