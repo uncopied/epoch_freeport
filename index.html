@@ -189,10 +189,18 @@
                     el.group=groupId;
                     return el;
                     });
-            let confirmedTx = await createAssetTxn([...allAssetClawBackTxns]);
+            let confirmedTx = await  await  myalgoConnect.signTransaction(allAssetClawBackTxns)
+                        let   txTest={}
+                try{ 
+                    txTest = (await client.sendRawTransaction(blobs).do());
+                    console.log(txTest);
+                   
+                }catch(error){
+                    console.error(error)
+                }
             // txID
   
-        })
+        });
  
 
        async function getTransactionInfo(txId){
@@ -224,8 +232,8 @@
 
 
         async function createAssetTxn(epochTx){
-
-return new Promise(async(resolve,reject)=>{
+            console.log(epochTx);
+            return new Promise(async(resolve,reject)=>{
     let epoch1Str = JSON.stringify(epochTx);
       let signedTxns = {}
       try{

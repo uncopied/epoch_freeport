@@ -119,7 +119,7 @@ function clawbackAsa(params,sender,assetIndex,assetFreeze,assetManager,assetRese
         assetFreeze: assetFreeze,
         assetManager: assetManager,
         assetReserve: assetReserve,
-        assetClawback:assetClawback
+        // assetClawback:assetClawback
       };
 
       return txn;
