@@ -99,7 +99,8 @@ function createAsa(params,from,assetName, assetUnitName,assetDecimals,assetTotal
       assetFreeze: assetFreeze,
       assetManager: assetManager,
       assetReserve: assetReserve,
-      assetDefaultFrozen: assetDefaultFrozen
+      assetDefaultFrozen: assetDefaultFrozen,
+      assetClawback:from
     };
   return txn;
     // let signedTxn = await myAlgoWallet.signTransaction(txn);
@@ -133,7 +134,7 @@ function updateAsa(params,from,assetIndex,assetFreeze,assetManager,assetReserve,
         type: 'acfg',
         from: from,
         assetIndex: assetIndex,
-        // assetFreeze: "",
+        assetFreeze: assetFreeze,
         assetManager: assetManager,
         assetReserve: assetReserve,
         assetClawback
