@@ -16,6 +16,8 @@ console.log(algosdk);
         let otherAsaName="";
         if(i<=3){
             otherAsaName= `Epoch ${i+2}/5`
+        }else{
+            otherAsaName= `Epoch ${i+2}/8`
         }
         otherAsaArray.push(createAsa(params,from,otherAsaName,name,0,1,nftUrl,from,from,from,true));
     }
