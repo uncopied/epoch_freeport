@@ -194,12 +194,28 @@
             for (let i =0;i<allTransactions.length;i++){
                 if(i!=1){
                         let txId = allTransactions[i].txID;
-                        let transactionInfo =  await getTransactionInfo(txId)
+                        let transactionInfo = {}
+                       try{
+                        transactionInfo = await getTransactionInfo(txId)
+                       }catch(error){
+                        epochNftDesc1.innerText= "Transaction failed";
+                           alert(error)
+                         console.error(error);
+                         toggleLoader(false);
+                       }
                         let assetId = transactionInfo.transaction["created-asset-index"];
                         allAssetIds.push(assetId);
                     }else{
                         let txId = allTransactions[i].txID;
-                        let transactionInfo =  await getTransactionInfo(txId)
+                        let transactionInfo = {}
+                            try{
+                                transactionInfo = await getTransactionInfo(txId)
+                            }catch(error){
+                                epochNftDesc1.innerText= "Transaction failed";
+                                alert(error)
+                                console.error(error);
+                                toggleLoader(false);
+                       }
                         appId = transactionInfo.transaction["created-application-index"];
                     }
             }
