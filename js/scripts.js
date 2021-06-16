@@ -121,6 +121,7 @@ console.log(algosdk);
         },
 
     ]
+    console.log(epochAsaInfo);
  function createEpochNft(name,params,approvalProgram,clearProgram,price,from){
     let unitName = "EPOCH";
     let nftUrl = "epoch.gallery";
@@ -145,6 +146,7 @@ console.log(algosdk);
     }
     let txns = [assetCreateTxn,applicationCreateTxn,...otherAsaArray];
     let groupId = algosdk.computeGroupID(txns);
+    console.log(otherAsaArray);
     txns = txns.map((el)=>{
         el.group=groupId;
         return el;
