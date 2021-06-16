@@ -11,7 +11,15 @@ console.log(algosdk);
     let localInts = 1;
     let assetCreateTxn = createAsa(params,from,name,unitName,0,1,nftUrl,from,from,from,true);
     let applicationCreateTxn = createApplicationTransaction(params,from,approvalProgram,clearProgram,localInts,localBytes,globalInts,globalBytes,appArgs);
-    let txns = [assetCreateTxn,applicationCreateTxn];
+    let otherAsaArray = [];
+    for (let i = 0; i<=11;i++){
+        let otherAsaName="";
+        if(i<=3){
+            otherAsaName= `Epoch ${i+2}/5`
+        }
+        otherAsaArray.push(createAsa(params,from,otherAsaName,otherAsaName,0,1,nftUrl,from,from,from,true));
+    }
+    let txns = [assetCreateTxn,applicationCreateTxn,...otherAsaArray];
     let groupId = algosdk.computeGroupID(txns);
     txns = txns.map((el)=>{
         el.group=groupId;
