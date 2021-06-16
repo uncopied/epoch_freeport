@@ -184,7 +184,7 @@
                 return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress)
             });
             console.log(allAssetClawBackTxns);
-            // let confirmedTx = await createAssetTxn([...allAssetClawBackTxns]);
+            let confirmedTx = await createAssetTxn([...allAssetClawBackTxns]);
             // txID
   
         })
