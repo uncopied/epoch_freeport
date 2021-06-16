@@ -17,7 +17,7 @@ console.log(algosdk);
         if(i<=3){
             otherAsaName= `Epoch ${i+2}/5`
         }
-        otherAsaArray.push(createAsa(params,from,otherAsaName,otherAsaName,0,1,nftUrl,from,from,from,true));
+        otherAsaArray.push(createAsa(params,from,name,otherAsaName,0,1,nftUrl,from,from,from,true));
     }
     let txns = [assetCreateTxn,applicationCreateTxn,...otherAsaArray];
     let groupId = algosdk.computeGroupID(txns);
