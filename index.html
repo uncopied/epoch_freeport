@@ -150,6 +150,7 @@
            let addresses = await  myalgoConnect.connect();
             sender = addresses[0].address;
             console.log(sender);
+            epochNftDesc1.innerText = "Connected to MyAlgo with address: "+ sender;
         });
       
          
@@ -160,9 +161,11 @@
             let confirmedTx = {}
             try{
                 confirmedTx =  await createAssetTxn([...epochtx1]);
-                toggleLoader(false)
+                epochNftDesc1.innerText = `Transaction successful with ${confirmedTx.txId}`
+                toggleLoader(false);
             }catch(error){
                 console.error(error);
+                epochNftDesc1.innerText="Transaction failed";
                 alert(error);
                 toggleLoader(false);
             }
@@ -194,17 +197,21 @@
             try{
                 assetClawbackAddress = await compileEpochClawbackAddress(appId,client);
             }catch(error){
+                epochNftDesc1.innerText= "Transaction failed";
                 toggleLoader(false);
                 console.error(error)
                 alert(error);  
+                return;
             }
             let params ={};
                 try{
                 params = await client.getTransactionParams().do();
                 }catch(error){
+                    epochNftDesc1.innerText= "Transaction failed";
                     console.error(error)
                 alert(error); 
                 toggleLoader(false)
+                return;
                 }
             let allAssetClawBackTxns = allAssetIds.map((el)=>{
                 return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress.hash)
@@ -223,11 +230,13 @@
                 try{ 
                     txTest = (await client.sendRawTransaction(blobs).do());
                     console.log(txTest);
+                    epochNftDesc1.innerText=`Transaction succcessful with transaction id: ${txTest.txId}`
                    toggleLoader(false);
                 }catch(error){
                     toggleLoader(false);
                     console.error(error)
                     alert(error);
+
                 }
             // txID
   
