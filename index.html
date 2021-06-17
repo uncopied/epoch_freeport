@@ -162,6 +162,9 @@
            let addresses = await  myalgoConnect.connect();
            console.log(addresses);
             sender = addresses[0].address;
+            if(addresses.length>1){
+                sender = prompt("Enter address");
+            }
             console.log(sender);
             epochNftDesc1.innerText = "Connected to MyAlgo with address: "+ sender;
         });
