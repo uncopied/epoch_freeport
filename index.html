@@ -184,9 +184,8 @@
             let params = await client.getTransactionParams().do();
             let   updateAppTxn =   updateApplication(16062689, approvalProgram,clearProgram,params,sender);
             let  signedAppTxn =   await  myalgoConnect.signTransaction(updateAppTxn);
-            let blobs = signedAppTxn.map((el,index)=>{
-            return el.blob
-               });
+            console.log(signedAppTxn)
+            let blobs = signedAppTxn.blob;
             let txTest = (await client.sendRawTransaction(blobs).do());
             epochNftDesc1.innerText = `Transaction successful with ${txTest.txId}`
             }catch(error){
