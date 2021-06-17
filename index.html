@@ -64,7 +64,7 @@
         <div class="actionContainer">
             <p id ="epochNftDesc1">Json Decription of transaction to Sign</p>
             <!-- <button id ="showEpochNft1Trans">Show NFT Edition 1 trans</button> -->
-            <button id ="createEpochNft1">Create All 13 Editions</button>
+            <!-- <button id ="createEpochNft1">Create All 13 Editions</button> -->
             <button id ="clawbackAllAssets">Clawback All 13 Editions</button>
             <a id="downloadAnchorElem" style="display:none"></a>
 
@@ -92,7 +92,7 @@
     <script>
         window.addEventListener('load',async function(){
         let epochNftDesc1 = document.getElementById("epochNftDesc1");
-        let epochNftBut1 = document.getElementById("createEpochNft1");
+        // let epochNftBut1 = document.getElementById("createEpochNft1");
         // let showNft1but = document.getElementById("showEpochNft1Trans");
         let clawback13aAssetsBtn = document.getElementById("clawbackAllAssets")
         let downloadJson = document.getElementById("downloadSampleJson");
@@ -131,7 +131,13 @@
         //                         {txID: "7KPXDCO33J4OUHRRE4VXTPL6ZUFT75ZM6ILZFBLI3GVNEDUGQE3Q", }];
         let appId =0;
         console.log(approvalProgram);
-        let allAssetIds = [];
+        let allAssetIds = [245558017,245558019,245558020,245558021,245558022,245558023,245558024,245558025,245558026,245558027,245558028,245558029,245558030]
+
+
+
+
+// 245558018
+
         console.log(clearProgram);
       
       
@@ -170,61 +176,27 @@
         });
       
          
-        epochNftBut1.addEventListener('click',async function(){      
-             // alert("epochNft1");
-             let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
-            toggleLoader(true);
-            let confirmedTx = {}
-            try{
-                confirmedTx =  await createAssetTxn([...epochtx1]);
-                epochNftDesc1.innerText = `Transaction successful with ${confirmedTx.txId}`
-                toggleLoader(false);
-            }catch(error){
-                console.error(error);
-                epochNftDesc1.innerText="Transaction failed";
-                alert(error);
-                toggleLoader(false);
-            }
-            // txID
-        });
+        // epochNftBut1.addEventListener('click',async function(){      
+        //      // alert("epochNft1");
+        //      let epochtx1 = createEpochNft("name",params,approvalProgram,clearProgram,1000000,sender);
+        //     toggleLoader(true);
+        //     let confirmedTx = {}
+        //     try{
+        //         confirmedTx =  await createAssetTxn([...epochtx1]);
+        //         epochNftDesc1.innerText = `Transaction successful with ${confirmedTx.txId}`
+        //         toggleLoader(false);
+        //     }catch(error){
+        //         console.error(error);
+        //         epochNftDesc1.innerText="Transaction failed";
+        //         alert(error);
+        //         toggleLoader(false);
+        //     }
+        //     // txID
+        // });
 
         clawback13aAssetsBtn.addEventListener('click',async function(){
-            console.log("clicked");
-            if(allTransactions.length==0){
-                return;
-            }
             toggleLoader(true);
-            for (let i =0;i<allTransactions.length;i++){
-                if(i!=1){
-                        let txId = allTransactions[i].txID;
-                        let transactionInfo = {}
-                       try{
-                        transactionInfo = await getTransactionInfo(txId)
-                       }catch(error){
-                        epochNftDesc1.innerText= "Transaction failed";
-                           alert(error)
-                         console.error(error);
-                         toggleLoader(false);
-                       }
-                        let assetId = transactionInfo.transaction["created-asset-index"];
-                        allAssetIds.push(assetId);
-                    }else{
-                        let txId = allTransactions[i].txID;
-                        let transactionInfo = {}
-                            try{
-                                transactionInfo = await getTransactionInfo(txId)
-                            }catch(error){
-                                epochNftDesc1.innerText= "Transaction failed";
-                                alert(error)
-                                console.error(error);
-                                toggleLoader(false);
-                       }
-                        appId = transactionInfo.transaction["created-application-index"];
-                    }
-            }
-
             console.log(allAssetIds);
-            console.log(appId)
             let assetClawbackAddress = {};
             try{
                 assetClawbackAddress = await compileEpochClawbackAddress(appId,client);
