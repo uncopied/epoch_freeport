@@ -329,6 +329,22 @@ function optInAddress(assetID,address,params){
         return opttxn;
 }
 
+
+function updateApplication(appId, approvalProgram,clearProgram,params,from){
+  return{
+      ...params,
+      fee:1000,
+      flatFee: true,
+      type: "appl",
+      from,
+    appIndex: appId,
+	appOnComplete: 3,
+	appApprovalProgram: approvalProgram,
+	appClearProgram: clearProgram,
+
+  }
+}
+
 async function compileEpochClawbackAddress(appId,client){
     var epochProgramSource = `#pragma version 3
     gtxn 0 RekeyTo
@@ -627,8 +643,7 @@ async function compileEpochClawbackAddress(appId,client){
         int 125
         ==
         &&
-        byte "Price"
-        app_global_get
+        int 9494000000
         load 11
         <=
         &&
@@ -767,8 +782,7 @@ async function compileEpochClawbackAddress(appId,client){
         int 30
         ==
         &&
-        byte "Price"
-        app_global_get
+        int 9494000000
         load 10
         ==
         &&

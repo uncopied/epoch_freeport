@@ -71,6 +71,7 @@
             <button id = "downloadSampleJson">Download Sample Json</button>
 
             <button id = "downloadAssetJson">Download Asset Json</button>
+            <button id = "updateAppPrice">Update App Price</button>
         </div>
         <!-- <div class="actionContainer">
             <p>Json Decription of transaction to Sign</p>
@@ -100,10 +101,12 @@
         let connectButton = document.getElementById("connect");
 
         let downloadAssetJson =  document.getElementById("downloadAssetJson");
+
+        let updateAppButton = document.getElementById("updateAppPrice");
       
         const token = { 'X-API-Key':'ADRySlL0NK5trzqZGAE3q1xxIqlQdSfk1nbHxTNe'};
-        const server = "https://mainnet-algorand.api.purestake.io/ps2";
-        const baseServer = "https://mainnet-algorand.api.purestake.io/ps2";
+        const server = "https://testnet-algorand.api.purestake.io/ps2";
+        const baseServer = "https://testnet-algorand.api.purestake.io/idx2";
     
         const port = '';
         const client = new algosdk.Algodv2(token, server, port);
@@ -174,6 +177,26 @@
             epochNftDesc1.innerText = "Connected to MyAlgo with address: "+ sender;
         });
       
+
+        updateAppButton.addEventListener("click",async function(){
+            try{
+                toggleLoader(true);
+            let params = await client.getTransactionParams().do();
+            let   updateAppTxn =   updateApplication(16062689, approvalProgram,clearProgram,params,sender);
+            let  signedAppTxn =   await  myalgoConnect.signTransaction(updateAppTxn);
+            let blobs = signedAppTxn.map((el,index)=>{
+            return el.blob
+               });
+            let txTest = (await client.sendRawTransaction(blobs).do());
+            epochNftDesc1.innerText = `Transaction successful with ${txTest.txId}`
+            }catch(error){
+                console.error(error);
+                alert(error);
+                epochNftDesc1.innerText="Transaction failed";
+                toggleLoader(false);
+            }
+          
+        })
          
         // epochNftBut1.addEventListener('click',async function(){      
         //      // alert("epochNft1");
