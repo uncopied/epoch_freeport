@@ -630,7 +630,7 @@ async function compileEpochClawbackAddress(appId,client){
         byte "Price"
         app_global_get
         load 11
-        >=
+        <=
         &&
         return
         
