@@ -213,9 +213,9 @@
                 }catch(error){
                     epochNftDesc1.innerText= "Transaction failed";
                     console.error(error)
-                alert(error); 
-                toggleLoader(false)
-                return;
+                    alert(error); 
+                    toggleLoader(false)
+                    return;
                 }
             let allAssetClawBackTxns = allAssetIds.map((el)=>{
                 return updateAsa(params,sender,el,sender,sender,sender,assetClawbackAddress.hash)
