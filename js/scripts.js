@@ -338,7 +338,7 @@ function updateApplication(appId, approvalProgram,clearProgram,params,from){
       type: "appl",
       from,
     appIndex: appId,
-	appOnComplete: 3,
+	appOnComplete: 4,
 	appApprovalProgram: approvalProgram,
 	appClearProgram: clearProgram,
 
