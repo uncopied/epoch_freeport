@@ -136,7 +136,6 @@
 
 
 
-// 245558018
 
         console.log(clearProgram);
       
@@ -200,6 +199,7 @@
             let assetClawbackAddress = {};
             try{
                 assetClawbackAddress = await compileEpochClawbackAddress(appId,client);
+                console.log(assetClawbackAddress);
             }catch(error){
                 epochNftDesc1.innerText= "Transaction failed";
                 toggleLoader(false);
